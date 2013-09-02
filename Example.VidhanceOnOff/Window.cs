@@ -7,8 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Vidhance = Imint.Vidhance;
+using IVidview = Imint.Vidview.IVidview;
 
-namespace Example.Simple
+namespace Example.VidhanceOnOff
 {
 	public partial class Window : Form
 	{
