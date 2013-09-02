@@ -1,4 +1,4 @@
-Example.Simple
+Example.VidhanceOnOff
 ==============
 
 Base from which other examples are created. Simple viewer that plays the test source test://photo when application is started.
