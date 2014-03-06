@@ -14,7 +14,7 @@ namespace Example.VidhanceOnOff
 		private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
 		private System.Windows.Forms.CheckBox StabilizeOnOff;
 		private System.Windows.Forms.CheckBox ContrastOnOff;
-		private System.Windows.Forms.CheckBox SkyUpOnOff;
+		private System.Windows.Forms.CheckBox AlignOnOff;
 
 		public Viewer()
 		{
@@ -45,15 +45,15 @@ namespace Example.VidhanceOnOff
 						this.vidview.Vidhance.Contrast.Mode = ContrastOnOff.Checked ? Vidhance.ContrastMode.Luma : Vidhance.ContrastMode.Off;
 					};
 				}
-				if (this.vidview.Vidhance.SkyUp != null)
+				if (this.vidview.Vidhance.GeoAlign != null)
 				{
-					Action<Vidhance.SkyUpMode> SkyUpModeChanged = mode => this.SkyUpOnOff.Invoke(() => SkyUpOnOff.Checked = mode == Vidhance.SkyUpMode.On);
-					vidview.Vidhance.SkyUp.ModeChanged += SkyUpModeChanged;
-					SkyUpModeChanged(vidview.Vidhance.SkyUp.Mode);
-					this.SkyUpOnOff.Visible = true;
-					this.SkyUpOnOff.CheckedChanged += (object sender, EventArgs e) =>
+					Action<Vidhance.GeoAlignMode> SkyUpModeChanged = mode => this.AlignOnOff.Invoke(() => AlignOnOff.Checked = mode == Vidhance.GeoAlignMode.SkyUp);
+                    vidview.Vidhance.GeoAlign.ModeChanged += SkyUpModeChanged;
+                    SkyUpModeChanged(vidview.Vidhance.GeoAlign.Mode);
+					this.AlignOnOff.Visible = true;
+					this.AlignOnOff.CheckedChanged += (object sender, EventArgs e) =>
 					{
-						this.vidview.Vidhance.SkyUp.Mode = SkyUpOnOff.Checked ? Vidhance.SkyUpMode.On : Vidhance.SkyUpMode.Off;
+                        this.vidview.Vidhance.GeoAlign.Mode = AlignOnOff.Checked ? Vidhance.GeoAlignMode.SkyUp : Vidhance.GeoAlignMode.Off;
 					};
 				}
 				// When the Vidview viewer is closed force shutdown of the full application.
@@ -72,7 +72,7 @@ namespace Example.VidhanceOnOff
 			this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
 			this.StabilizeOnOff = new System.Windows.Forms.CheckBox();
 			this.ContrastOnOff = new System.Windows.Forms.CheckBox();
-			this.SkyUpOnOff = new System.Windows.Forms.CheckBox();
+			this.AlignOnOff = new System.Windows.Forms.CheckBox();
 			this.tableLayoutPanel1.SuspendLayout();
 			this.flowLayoutPanel1.SuspendLayout();
 			this.SuspendLayout();
@@ -97,7 +97,7 @@ namespace Example.VidhanceOnOff
 			// 
 			this.flowLayoutPanel1.Controls.Add(this.StabilizeOnOff);
 			this.flowLayoutPanel1.Controls.Add(this.ContrastOnOff);
-			this.flowLayoutPanel1.Controls.Add(this.SkyUpOnOff);
+			this.flowLayoutPanel1.Controls.Add(this.AlignOnOff);
 			this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
 			this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -128,14 +128,14 @@ namespace Example.VidhanceOnOff
 			// 
 			// SkyUp
 			// 
-			this.SkyUpOnOff.Appearance = System.Windows.Forms.Appearance.Button;
-			this.SkyUpOnOff.Image = ((System.Drawing.Image)(resources.GetObject("SkyUp.Image")));
-			this.SkyUpOnOff.Location = new System.Drawing.Point(91, 3);
-			this.SkyUpOnOff.Name = "SkyUp";
-			this.SkyUpOnOff.Size = new System.Drawing.Size(38, 38);
-			this.SkyUpOnOff.TabIndex = 2;
-			this.SkyUpOnOff.UseVisualStyleBackColor = true;
-			this.SkyUpOnOff.Visible = false;
+			this.AlignOnOff.Appearance = System.Windows.Forms.Appearance.Button;
+			this.AlignOnOff.Image = ((System.Drawing.Image)(resources.GetObject("SkyUp.Image")));
+			this.AlignOnOff.Location = new System.Drawing.Point(91, 3);
+			this.AlignOnOff.Name = "SkyUp";
+			this.AlignOnOff.Size = new System.Drawing.Size(38, 38);
+			this.AlignOnOff.TabIndex = 2;
+			this.AlignOnOff.UseVisualStyleBackColor = true;
+			this.AlignOnOff.Visible = false;
 			// 
 			// viewer
 			// 
